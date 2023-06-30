@@ -16,7 +16,7 @@ class Table():
             cursor = conn.cursor()
             cursor.execute(query)
             conn.commit()
-    # Fetch all content
+    # Fetch all content or one result
     @staticmethod
     def fetch(query: str, path: str, all: bool = True):
         with sqlite3.connect(path) as conn:
