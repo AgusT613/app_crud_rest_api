@@ -1,7 +1,6 @@
 import sqlite3
 from os.path import abspath, split, join
 import requests
-import pandas as pd
 
 class Table():
     def __init__(self, table_name: str):
@@ -19,10 +18,12 @@ class Table():
             conn.commit()
     # Fetch all content
     @staticmethod
-    def fetch_all(query: str, path: str):
+    def fetch(query: str, path: str, all: bool = True):
         with sqlite3.connect(path) as conn:
             cursor = conn.cursor()
             result = cursor.execute(query)
+            if not all:
+                return result.fetchone()
             return result.fetchall()
     # Operate many data with a list of tuples
     @staticmethod
@@ -68,7 +69,7 @@ class Table():
         query = f'SELECT * FROM {self.table_name}'
         try:
             # Result is a list of tuples
-            result = Table.fetch_all(query, self.path)
+            result = Table.fetch(query, self.path)
         except Exception as error:
             return print(f'Could not fetch data ----> {error}')
         # Convert to list of dicts
@@ -83,10 +84,32 @@ class Table():
                 "country": person[5]
             }
             user_list.append(data)
-        print('---- DATA ----')
-        df = pd.DataFrame(user_list)
-        print(df)
         return user_list
+
+    # Select a registry that depend on id and firstName given
+    def select_from_where(self, id: int, first_name: str) -> dict | str:
+        query = f'''
+            SELECT * FROM {self.table_name}
+            WHERE UserId = {id} and FirstName = "{first_name}"
+        '''
+        try:
+            content: tuple = Table.fetch(query, self.path, all=False)
+            message = str
+            if content == None:
+                message = f'No registry with id <{id}> and first_name <{first_name}> found'
+                return content, message
+        except Exception as error:
+            return print(f'An error ocurred while filtering a registry ----> {error}')
+            
+        data = {
+            "id": content[0],
+            "firstName": content[1],
+            "lastName": content[2],
+            "age": content[3],
+            "email": content[4],
+            "country": content[5]
+        }
+        return data, message
 
     # Delete everything from table
     def delete_everything_from(self):
@@ -118,6 +141,33 @@ class Table():
             print(f'{message} ----> {error}')
             return message
     
+    # Update registry by id and first_name
+    def update(self, id: int, first_name: str, body: dict):
+        content, message = self.select_from_where(id, first_name)
+        if content == None:
+            return {'message': message}
+        
+        query = f'''
+            UPDATE {self.table_name}
+            SET FirstName = "{body['firstName']}",
+            LastName = "{body['lastName']}",
+            Age = "{body['age']}",
+            Email = "{body['email']}",
+            Country = "{body['country']}"
+            WHERE UserId = {id} AND FirstName = "{first_name}"
+        '''
+        try:
+            Table.conn(query, self.path)
+            content = self.select_from_where(id, body["firstName"])[0]
+            message = f'Registry with id <{id}> and first_name <{first_name}> was updated successfully'
+            return {
+                'message': message,
+                'content': content
+            }
+        except Exception as error:
+            print(f'Could not update user ----> {error}')
+            
+    # Create new random users and push to database
     def import_random_users(self, number_of_users: str):
         # Random users API
         users_api_link = f'https://randomuser.me/api/?results={number_of_users}'
