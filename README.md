@@ -12,7 +12,7 @@ and connects to it through different methods and functions.
 
 ## About the proyect
 
-The main class `Table` (on tables.py) is an object in which it is being implemented
+The main class `Table`, on `tables.py` is an object in which it is being implemented
 the different queries as methods and functions that can be called from the FastAPI
 application.
 
