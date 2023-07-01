@@ -1,6 +1,5 @@
 # Framework
 from fastapi import APIRouter
-from fastapi.encoders import jsonable_encoder
 # Models
 from models.user_model import User
 # Database functions
