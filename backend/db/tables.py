@@ -141,6 +141,25 @@ class Table():
             print(f'{message} ----> {error}')
             return message
     
+    # Delete user by id and first_name
+    def delete_from_where(self, id: int, first_name: str) -> str:
+        # Check if user exist
+        content, message = self.select_from_where(id, first_name)
+        if content == None:
+            return {'message': message}
+        
+        query = f'''
+            DELETE FROM {self.table_name}
+            WHERE UserId = {id} and FirstName = "{first_name}"
+        '''
+        try:
+            Table.conn(query, self.path)
+            message = f'User with id <{id}> and first_name <{first_name}> was deleted successfully'
+            return {'message': message}
+        except Exception as error:
+            message = f'Could not update user with id <{id}> and first_name <{first_name}> ----> {error}'
+            return {'message': message}
+    
     # Update registry by id and first_name
     def update(self, id: int, first_name: str, body: dict):
         content, message = self.select_from_where(id, first_name)

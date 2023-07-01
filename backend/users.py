@@ -35,3 +35,7 @@ async def create_user(user_model: User):
 async def update_user(id: int, first_name: str, user_model: User):
     user_dict = user_model.dict()
     return users.update(id, first_name, user_dict)
+
+@router.delete('/user')
+async def delete_user(id: int, first_name: str):
+    return users.delete_from_where(id, first_name)
