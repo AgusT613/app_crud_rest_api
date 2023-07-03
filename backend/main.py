@@ -9,7 +9,7 @@ app = FastAPI()
 app.include_router(users.router)
 
 # Allowed HTML (on localhost) to make requests
-index_html = 'http://127.0.0.1:5500'
+index_html = 'http://localhost:5173'
 # CORS Authentication
 app.add_middleware(
     CORSMiddleware,

@@ -1,0 +1,67 @@
+:root{
+    --main_bg_color: #1e1e20;
+    --main_text_color: rgba(255, 255, 245, .86);
+    --table_background_color: #646cff7a;
+    --table_odd_row_color: #313136;
+    --table_even_row_color: #252529;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    color: var(--main_text_color);
+    background: var(--main_bg_color);
+}
+
+/* Main Title */
+.main_title{
+    outline: 2px solid #fff;
+    text-align: center;
+    padding: .75em;
+}
+
+/* Table Content */
+.content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+}
+
+.content__table{
+    background: var(--table_background_color);
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 55em;
+}
+
+.content__table__header__data{
+    padding: 1em 0;
+}
+
+.content__table__header__id,
+.content__table__header__age{
+    width: 3em;
+}
+
+.content__table__header__email{
+    width: 22em;
+}
+
+.content__table__body tr:nth-child(odd){
+    background: var(--table_odd_row_color);
+}
+
+.content__table__body tr:nth-child(even){
+    background: var(--table_even_row_color);
+}
+
+.content__table__body tr td{
+    text-align: center;
+    padding: .5em 0;
+}

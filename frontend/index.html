@@ -3,11 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <h1 class="main_title">User Database</h1>
+
+    <!-- Filter/Search Bar -->
+    <!-- <div class="container">
+      <form action="" class="container__form">
+        <input type="text" placeholder="Filter by id" class="container__form__input">
+        <input type="text" placeholder="Filter by user name" class="container__form__input">
+        <button type="submit">Filter</button>
+      </form>
+    </div> -->
+
+    <!-- Database content table -->
+    <div class="content">
+      <table class="content__table">
+        <thead class="content__table__header">
+          <th class="content__table__header__data content__table__header__id">Id</th>
+          <th class="content__table__header__data content__table__header__name">First Name</th>
+          <th class="content__table__header__data content__table__header__last">Last Name</th>
+          <th class="content__table__header__data content__table__header__age">Age</th>
+          <th class="content__table__header__data content__table__header__email">Email</th>
+          <th class="content__table__header__data content__table__header__country">Country</th>
+        </thead>
+        <tbody class="content__table__body">
+          <tr>
+            <td>0</td>
+            <td>User</td>
+            <td>Template</td>
+            <td>35</td>
+            <td>user.template@example.com</td>
+            <td>Japan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="src/load_data.js"></script>
   </body>
 </html>
