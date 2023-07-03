@@ -41,7 +41,7 @@ body{
 }
 
 .content__table__header__data{
-    padding: 1em 0;
+    padding: .7em 0;
 }
 
 .content__table__header__id,
@@ -61,7 +61,22 @@ body{
     background: var(--table_even_row_color);
 }
 
+.content__table__header__edit{
+    background: #eee;
+    width: 3em;
+    padding: 0;
+}
+
 .content__table__body tr td{
     text-align: center;
     padding: .5em 0;
+}
+
+.content__table__body__edit:hover{
+    background: var(--table_even_row_color);
+    cursor: pointer;
+}
+
+.content__table__body__edit:active{
+    background: var(--table_odd_row_color);
 }
