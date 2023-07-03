@@ -1,3 +1,20 @@
+// Three dots icon edition
+function generateIcon(){
+    let imagePath = 'images/three_dots_32x32_edit_horizontal_blue.png'
+    
+    let container = document.createElement('td')
+    let containerClassName = 'content__table__body__edit'
+    container.setAttribute('class', `${containerClassName}`)
+
+    let editIcon = document.createElement('img')
+    let editIconClassName = 'content__table__body__icon'
+    editIcon.setAttribute('src', `${imagePath}`)
+    editIcon.setAttribute('class', `${editIconClassName}`)
+
+    container.appendChild(editIcon)
+    return container
+}
+
 // Creates one table row element
 function createTableRow(id, firstName, lastName, age, email, country){
     // ----------------------------------------
@@ -15,6 +32,9 @@ function createTableRow(id, firstName, lastName, age, email, country){
         dataCellElement.textContent = data
         fragment.appendChild(dataCellElement)
     })
+    // Put the edit icon on the data cell
+    let editIcon = generateIcon()
+    fragment.appendChild(editIcon)
 
     // ----------------------------------------
     // Apend the document fragment to the table row container
@@ -62,3 +82,4 @@ async function getContentDatabase(){
 }
 
 getContentDatabase()
+generateIcon()

@@ -4,6 +4,7 @@
     --table_background_color: #646cff7a;
     --table_odd_row_color: #313136;
     --table_even_row_color: #252529;
+    --table_row_hover: #606269;
 }
 
 *{
@@ -72,11 +73,14 @@ body{
     padding: .5em 0;
 }
 
-.content__table__body__edit:hover{
-    background: var(--table_even_row_color);
+.content__table__body__edit{
     cursor: pointer;
 }
 
+.content__table__body__edit:hover{
+    background: var(--table_row_hover);
+}
+
 .content__table__body__edit:active{
-    background: var(--table_odd_row_color);
+    background: none;
 }
