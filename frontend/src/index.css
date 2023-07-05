@@ -5,6 +5,11 @@
     --table_odd_row_color: #313136;
     --table_even_row_color: #252529;
     --table_row_hover: #606269;
+    --table_icons_size: 32px;
+    --edit_icon: url(../images/edit_icon_32x32_bg_transparent.png);
+    --three_dots_edit_user: url(../images/three_dots_32x32_edit_horizontal_blue.png);
+    --close_button_img_white: url(../images/close_icon_32x32_white.png);
+    --close_button_img_black: url(../images/close_icon_32x32_black.png);
 }
 
 *{
@@ -41,12 +46,14 @@ body{
     width: 55em;
 }
 
+/* Row Header */
 .content__table__header__data{
-    padding: .7em 0;
+    height: 3em;
 }
 
 .content__table__header__id,
-.content__table__header__age{
+.content__table__header__age,
+.content__table__header__edit{
     width: 3em;
 }
 
@@ -54,25 +61,32 @@ body{
     width: 22em;
 }
 
-.content__table__body tr:nth-child(odd){
+.content__table__header__edit{
+    background: #fff;
+}
+
+.content__table__header__icon{
+    display: inline-flex;
+    width: var(--table_icons_size);
+    height: var(--table_icons_size);
+    background: var(--edit_icon) no-repeat center center;
+}
+
+/* Rows Body */
+.content__table__body__user__data:nth-child(odd){
     background: var(--table_odd_row_color);
 }
 
-.content__table__body tr:nth-child(even){
+.content__table__body__user__data:nth-child(even){
     background: var(--table_even_row_color);
 }
 
-.content__table__header__edit{
-    background: #eee;
-    width: 3em;
-    padding: 0;
-}
-
-.content__table__body tr td{
+.content__table__body__user__data td{
     text-align: center;
     padding: .5em 0;
 }
 
+/* Edit User Button */
 .content__table__body__edit{
     cursor: pointer;
 }
@@ -83,4 +97,51 @@ body{
 
 .content__table__body__edit:active{
     background: none;
+}
+
+.content__table__body__icon{
+    display: inline-flex;
+    width: var(--table_icons_size);
+    height: var(--table_icons_size);
+    background: var(--three_dots_edit_user);
+}
+
+/* Pop Up Edit User */
+.popup{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .6);
+    position: fixed;
+    top: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup__content{
+    border: 1px solid #fff;
+    padding: 2em;
+    width: 25em;
+    height: 25em;
+    position: relative;
+}
+
+.popup__content__close__button{
+    background: #fff var(--close_button_img_white) no-repeat center center;
+    cursor: pointer;
+    padding: 1em;
+    border-radius: 50%;
+    position: absolute;
+    top: -1em;
+    right: -1em;
+    transition: .4s ease;
+}
+
+.popup__content__close__button:hover{
+    background: #fff var(--close_button_img_black); 
+}
+
+.popup__content__close__button:active{
+    transition: none;
+    background: #0eb33b var(--close_button_img_black);
 }

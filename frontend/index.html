@@ -30,25 +30,22 @@
           <th class="content__table__header__data content__table__header__email">Email</th>
           <th class="content__table__header__data content__table__header__country">Country</th>
           <th class="content__table__header__data content__table__header__edit">
-            <img class="content__table__header__icon" src="images/edit_icon_32x32_bg_transparent.png" alt="Edit">
+            <span class="content__table__header__icon"></span>
           </th>
         </thead>
-        <tbody class="content__table__body">
-          <tr>
-            <td>0</td>
-            <td>User</td>
-            <td>Template</td>
-            <td>35</td>
-            <td>user.template@example.com</td>
-            <td>Japan</td>
-            <td class="content__table__body__edit">
-              <img class="content__table__body__icon" src="images/three_dots_32x32_edit_horizontal_blue.png" alt="Three dots edit">
-            </td>
-          </tr>
-        </tbody>
+        <tbody class="content__table__body"></tbody>
       </table>
     </div>
 
-    <script src="src/load_data.js"></script>
+    <!-- Pop Up -->
+    <div class="popup">
+      <div class="popup__content">
+        <span class="popup__content__close__button"></span>
+        <form action="POST">
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="src/load_data.js"></script>
   </body>
 </html>
