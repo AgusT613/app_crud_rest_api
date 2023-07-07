@@ -41,7 +41,28 @@
     <div class="popup">
       <div class="popup__content">
         <span class="popup__content__close__button"></span>
-        <form action="POST">
+        <div class="popup__content__actions">
+          <span class="popup__content__update__button"></span>
+          <span class="popup__content__delete__button"></span>
+        </div>
+        <form class="popup__content__form" action="">
+          <!-- First Name -->
+          <label for="First Name">First Name</label>
+          <input name="First Name" class="popup__content__input" readonly type="text" placeholder="First name">
+          <!-- Last Name -->
+          <label for="Last Name">Last Name</label>
+          <input name="Last Name" class="popup__content__input" readonly type="text" placeholder="Last name">
+          <!-- Age -->
+          <label for="Age">Age</label>
+          <input name="Age" class="popup__content__input" readonly type="text" placeholder="Age">
+          <!-- Email -->
+          <label for="Email">Email</label>
+          <input name="Email" class="popup__content__input" readonly type="email" placeholder="Email">
+          <!-- Country -->
+          <label for="Country">Country</label>
+          <input name="Country" class="popup__content__input" readonly type="text" placeholder="Country">
+          <!-- Button -->
+          <!-- <input type="button" value=""> -->
         </form>
       </div>
     </div>

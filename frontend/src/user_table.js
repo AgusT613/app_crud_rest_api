@@ -1,14 +1,17 @@
 import { openEditor } from './pop_up'
 
 // Create three dots icon (edit user)
-function createIcon(){
+function createIcon(userData){
     // ----------------------------------------
     // Main Container
     let container = document.createElement('td')
     let containerClassName = 'content__table__body__edit'
     container.setAttribute('class', containerClassName)
     // Edit user button event listener
-    container.addEventListener('click', openEditor)
+    userData.shift()
+    container.addEventListener('click', ()=>{
+        openEditor(userData)
+    })
     // ----------------------------------------
     // Edit user icon
     let editIcon = document.createElement('span')
@@ -40,7 +43,7 @@ export function createTableRow(id, firstName, lastName, age, email, country){
         fragment.appendChild(dataCellElement)
     })
     // Put the edit icon on the data cell
-    let editIcon = createIcon()
+    let editIcon = createIcon(userData)
     fragment.appendChild(editIcon)
 
     // ----------------------------------------

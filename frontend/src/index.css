@@ -10,6 +10,8 @@
     --three_dots_edit_user: url(../images/three_dots_32x32_edit_horizontal_blue.png);
     --close_button_img_white: url(../images/close_icon_32x32_white.png);
     --close_button_img_black: url(../images/close_icon_32x32_black.png);
+    --update_icon: url(../images/update_icon_32x32.png);
+    --delete_icon: url(../images/delete_icon_32x32.png);
 }
 
 *{
@@ -119,6 +121,7 @@ body{
 }
 
 .popup__content{
+    background: rgba(9, 9, 9, 0.75);
     border: 1px solid #fff;
     padding: 2em;
     width: 25em;
@@ -144,4 +147,64 @@ body{
 .popup__content__close__button:active{
     transition: none;
     background: #0eb33b var(--close_button_img_black);
+}
+
+/* Actions Container */
+.popup__content__actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    position: absolute;
+    width: 100%;
+    top: -1.5em;
+    left: 0em;
+}
+
+.popup__content__update__button,
+.popup__content__delete__button{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.popup__content__update__button{
+    background: #c5ddc0 var(--update_icon) no-repeat center center;
+}
+.popup__content__update__button:hover{
+    background: #86bf7a  var(--update_icon) no-repeat center center;
+}
+.popup__content__update__button:active{
+    background: #6da462  var(--update_icon) no-repeat center center;
+    border: 3px solid #000;
+}
+
+.popup__content__delete__button{
+    background: #ff4a4ae8 var(--delete_icon) no-repeat center center;
+}
+.popup__content__delete__button:hover{
+    background: #dd7676 var(--delete_icon) no-repeat center center;
+}
+.popup__content__delete__button:active{
+    background: #ff6a6a var(--delete_icon) no-repeat center center;
+    border: 3px solid #000;
+}
+
+/* User form container */
+.popup__content__form{
+    height: 100%;
+    display: grid;
+    align-content: center;
+    gap: .5em;
+}
+
+.popup__content__input{
+    padding: .5em 0;
+    border: none;
+    text-indent: 1em;
+}
+
+.popup__content__input:focus{
+    outline: none;
 }
